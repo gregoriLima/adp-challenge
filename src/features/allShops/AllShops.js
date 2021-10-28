@@ -27,19 +27,32 @@ export const AllShops = () => {
   };
 
   return (
-    <div className="shops-container">
-      {allShops.map((shop) => (
-        <Shop shop={shop} key={shop.id}>
-          <FavoriteButton
-            onClickHandler={() => onAddShopHandler(shop)}
-            icon={favoriteIconURL}
-            favorite={true}
-          >
-            Add to Favorites
-          </FavoriteButton>
-        </Shop>
-      ))}
-    </div>
+    <>
+      <h2>
+        <label for="select1">Top Five Ice Cream Shops in Alpharetta by </label>
+
+        <select name="select1" className="form-control">
+
+          <option value="rating" key={123} >ratings</option>
+
+          <option value="review_count" key={321} >reviews</option>
+
+        </select>
+      </h2>
+      <div className="shops-container">
+        {allShops.map((shop) => (
+          <Shop shop={shop} key={shop.id}>
+            <FavoriteButton
+              onClickHandler={() => onAddShopHandler(shop)}
+              icon={favoriteIconURL}
+              favorite={true}
+            >
+              Add to Favorites
+            </FavoriteButton>
+          </Shop>
+        ))}
+      </div>
+    </>
   );
 };
 

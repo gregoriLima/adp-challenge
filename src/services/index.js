@@ -15,14 +15,14 @@ const fetchShops = async (sort_by = 'rating') => {
         }
     };
 
-    const { data } = await axios(config);
+    const a = await axios(config);
+    console.log('response: ', a);
+    const { data } = a;
 
     const allShopsData = data.businesses.map((element) => {
         const { id, name, image_url: img, url, rating, review_count } = element;
         return ({ id, name, img, url, rating, review_count });
     })
-
-
 
     return allShopsData;
 

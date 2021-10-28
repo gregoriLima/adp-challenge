@@ -1,0 +1,1 @@
+{"id":"6c7f27dd-d077-417e-80ac-6a90f2d789fc","space":10507,"runtime":"nodejs14.x","name":"serverless","path":"4hyuj0","project":"b0ors3r5","account":"144798365827","region":"sa-east-1","deps":["express@^4.17.1","axios@^0.24.0","fetch@^1.1.0"],"envs":["REACT_APP_YELP_API_KEY","REACT_APP_YELP_ENDPOINT"],"public":true,"log_level":"debug","cron":""}
