@@ -1,4 +1,4 @@
-## This is a simple solution for ADP Challenge by Grégori Lima.
+### This is a simple solution for ADP Challenge by Grégori Lima.
 
 Create a '.env' file based on template '.env.example' file
 
