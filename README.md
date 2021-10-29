@@ -9,7 +9,7 @@ Quick step-by-tep to run:
 
 
 ### hosted version?
-You can check my **hosted PROD version** of this app running in a [serverless environment with express by clicking here](https://adp-challenge.deta.dev).
+You can check my **hosted PROD version** of this app running in a [serverless environment with express by clicking here](https://adp-challenge.deta.dev). (https://adp-challenge.deta.dev)
 
 -------
 
