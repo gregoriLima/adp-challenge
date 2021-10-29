@@ -1,24 +1,19 @@
-import { selectSearchTerm } from '../searchTerm/searchTermSlice.js';
-import fetchShops from '../../services/index.js';
+import { selectSearchTerm } from '../searchTerm/searchTermSlice';
+import fetchShops from '../../services/index';
 
-export const loadDataMiddleware = storeAPI => next => action => {
-
+export const loadDataMiddleware = (storeAPI) => (next) => (action) => {
   if (typeof action === 'function') {
-    return action(storeAPI.dispatch, storeAPI.getState)
+    return action(storeAPI.dispatch, storeAPI.getState);
   }
 
-  return next(action)
-}
+  return next(action);
+};
 
+export const loadData = (sortBy) => async (dispatch, getState) => {
+  const allShopsData = await fetchShops(sortBy);
 
-export const loadData = async (dispatch, getState) => {
-
- const allShopsData = await fetchShops();
-
- dispatch({ type: 'allShops/loadData', payload: allShopsData });
-
-}
-
+  dispatch({ type: 'allShops/loadData', payload: allShopsData });
+};
 
 const initialState = [];
 export const allShopsReducer = (allShops = initialState, action) => {
@@ -26,23 +21,19 @@ export const allShopsReducer = (allShops = initialState, action) => {
     case 'allShops/loadData':
       return action.payload;
     case 'favoriteShops/addShop':
-      return allShops.filter(shop => shop.id !== action.payload.id);
+      return allShops.filter((shop) => shop.id !== action.payload.id);
     case 'favoriteShops/removeShop':
-      return [...allShops, action.payload]
+      return [...allShops, action.payload];
     default:
       return allShops;
   }
-}
-
+};
 
 export const selectAllShops = (state) => state.allShops;
-
 
 export const selectFilteredAllShops = (state) => {
   const allShops = selectAllShops(state);
   const searchTerm = selectSearchTerm(state);
 
-  return allShops.filter((shop) =>
-    shop.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  return allShops.filter((shop) => shop.name.toLowerCase().includes(searchTerm.toLowerCase()));
 };

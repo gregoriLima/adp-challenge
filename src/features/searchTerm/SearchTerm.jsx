@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setSearchTerm, clearSearchTerm, selectSearchTerm } from './searchTermSlice.js';
+import { setSearchTerm, clearSearchTerm, selectSearchTerm } from './searchTermSlice';
 
-import searchIconUrl from "../../assets/search.svg"
-import clearIconUrl from "../../assets/cancel.svg";
+import searchIconUrl from '../../assets/search.svg';
+import clearIconUrl from '../../assets/cancel.svg';
 
+const SearchTerm = () => {
+  useEffect(() => {
+    const img = new Image();
+    img.src = clearIconUrl;
+    const imagem = img;
+  });
 
-export const SearchTerm = () => {
   const searchTerm = useSelector(selectSearchTerm);
   const dispatch = useDispatch();
 
@@ -15,7 +20,7 @@ export const SearchTerm = () => {
     const userInput = e.target.value;
     dispatch(setSearchTerm(userInput));
   };
-  
+
   const onClearSearchTermHandler = () => {
     dispatch(clearSearchTerm());
   };
@@ -42,3 +47,5 @@ export const SearchTerm = () => {
     </div>
   );
 };
+
+export default SearchTerm;

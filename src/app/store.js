@@ -1,13 +1,15 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { favoriteShopsReducer } from '../features/favoriteShops/favoriteShopsSlice.js';
-import { searchTermReducer } from '../features/searchTerm/searchTermSlice.js';
-import { allShopsReducer, loadDataMiddleware } from '../features/allShops/allShopsSlice.js';
-
+import { favoriteShopsReducer } from '../features/favoriteShops/favoriteShopsSlice';
+import { searchTermReducer } from '../features/searchTerm/searchTermSlice';
+import { allShopsReducer, loadDataMiddleware } from '../features/allShops/allShopsSlice';
 
 const middlewareEnhancer = applyMiddleware(loadDataMiddleware);
 
-export const store = createStore(combineReducers({
+const store = createStore(combineReducers({
   favoriteShops: favoriteShopsReducer,
   searchTerm: searchTermReducer,
-  allShops: allShopsReducer
+  allShops: allShopsReducer,
 }), middlewareEnhancer);
+
+export default store;

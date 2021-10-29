@@ -1,11 +1,11 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 
-import { AllShops } from '../features/allShops/AllShops.js';
-import { FavoriteShops } from '../features/favoriteShops/FavoriteShops.js';
-import Header from '../components/Header'
+import AllShops from '../features/allShops/AllShops';
+import FavoriteShops from '../features/favoriteShops/FavoriteShops';
+import Header from '../components/Header';
 
-
-export function App() {
+function App() {
   return (
     <main>
       <section>
@@ -20,5 +20,7 @@ export function App() {
         <AllShops />
       </section>
     </main>
-  )
+  );
 }
+
+export default App;
