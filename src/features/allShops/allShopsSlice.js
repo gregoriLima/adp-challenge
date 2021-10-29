@@ -1,5 +1,5 @@
 import { selectSearchTerm } from '../searchTerm/searchTermSlice';
-import fetchShops from '../../services/index';
+import {fetchShops} from '../../services/index';
 
 export const loadDataMiddleware = (storeAPI) => (next) => (action) => {
   if (typeof action === 'function') {

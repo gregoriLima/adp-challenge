@@ -25,8 +25,8 @@ const fetchShops = async (sortBy = 'rating') => {
   const { data } = await axios(config);
 
   const allShopsData = data.businesses.map((element) => {
-    const { id, name, image_url: img, url, rating, review_count } = element;
-    return ({ id, name, img, url, rating, review_count });
+    const { id, name, image_url: img, url, rating, review_count, location } = element;
+    return ({ id, name, img, url, rating, review_count, location });
   });
 
   if (sortBy === 'rating') {
@@ -36,4 +36,30 @@ const fetchShops = async (sortBy = 'rating') => {
   return allShopsData;
 };
 
-export default fetchShops;
+// https://api.yelp.com/v3/businesses/v21jReWx5dd5KuQ0QS6Dog/reviews
+const fetchReview = async (shopId) => {
+  const config = {
+    method: 'get',
+    url: `/v3/businesses/${shopId}/reviews`,
+    headers: {
+      Authorization: `Bearer ${REACT_APP_YELP_API_KEY}`,
+      accepts: 'application/json',
+    },
+  };
+
+  const { data } = await axios(config);
+
+  return data;
+
+  // const allShopsData = data.businesses.map((element) => {
+  //   const { id, name, image_url: img, url, rating, review_count } = element;
+  //   return ({ id, name, img, url, rating, review_count });
+  // });
+
+  // return allShopsData;
+};
+
+export {
+  fetchShops,
+  fetchReview,
+};
