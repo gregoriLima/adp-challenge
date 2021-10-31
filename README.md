@@ -6,9 +6,11 @@
 - Node (serverless function)
 - Passport (stateless authentication strategy)
 
+### Quick step-by-step to run::
 Create a '.env' file based on template '.env.example' file
 
-Quick step-by-tep to run:
+- clone this repo.
+
 - install node.js >= v14
 - `npm i`
 - `npm start`
