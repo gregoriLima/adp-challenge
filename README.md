@@ -4,7 +4,7 @@
 - React
 - Redux
 - Node (serverless function)
-- Passport (stateless authentication strategy)
+- Passport (stateless authentication strategy using JWT)
 
 ### Quick step-by-step to run::
 Create a '.env' file based on template '.env.example' file
