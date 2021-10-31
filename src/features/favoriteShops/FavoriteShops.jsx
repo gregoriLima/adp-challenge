@@ -15,7 +15,6 @@ const FavoriteShops = () => {
     dispatch(removeShop(shop));
   };
 
-  // Helper Function
   function createShopComponent(shop) {
     return (
       <Shop shop={shop} key={shop.id}>
