@@ -1,5 +1,11 @@
 ### This is a simple solution for ADP Challenge by Grégori Lima.
 
+### Implemented using:
+- React
+- Redux
+- Node (serverless function)
+- Passport (stateless authentication strategy)
+
 Create a '.env' file based on template '.env.example' file
 
 Quick step-by-tep to run:
