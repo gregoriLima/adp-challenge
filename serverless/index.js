@@ -1,5 +1,7 @@
 const axios = require('axios');
 const express = require('express');
+const authMiddleware = require('./auth/auth-middleware');
+const authStrategy = require('./auth/auth-strategy');
 
 const app = express();
 
@@ -32,8 +34,8 @@ const fetchYelpApi = async (req, res) => {
 };
 
 app
-  .get('/v3/businesses/search', fetchYelpApi);
+  .get('/v3/businesses/search', authMiddleware.bearer, fetchYelpApi);
 app
-  .get('/v3/businesses/:id/reviews', fetchYelpApi);
+  .get('/v3/businesses/:id/reviews', authMiddleware.bearer, fetchYelpApi);
 
 module.exports = app;

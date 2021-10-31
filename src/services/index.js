@@ -3,6 +3,9 @@
 import axios from 'axios';
 
 const { REACT_APP_YELP_API_KEY } = process.env;
+const { REACT_APP_JWT } = process.env;
+
+const token = process.env.NODE_ENV === 'development' ? REACT_APP_YELP_API_KEY : REACT_APP_JWT;
 
 const assureInRange = (value, range = []) => {
   if (!range.includes(value)) {
@@ -17,7 +20,7 @@ const fetchShops = async (sortBy = 'rating') => {
     method: 'get',
     url: `/v3/businesses/search?categories=icecream&location=Alpharetta&limit=5&sort_by=${sortBy}`,
     headers: {
-      Authorization: `Bearer ${REACT_APP_YELP_API_KEY}`,
+      Authorization: `Bearer ${token}`,
       accepts: 'application/json',
     },
   };
@@ -41,7 +44,7 @@ const fetchReview = async (shopId) => {
     method: 'get',
     url: `/v3/businesses/${shopId}/reviews`,
     headers: {
-      Authorization: `Bearer ${REACT_APP_YELP_API_KEY}`,
+      Authorization: `Bearer ${token}`,
       accepts: 'application/json',
     },
   };
