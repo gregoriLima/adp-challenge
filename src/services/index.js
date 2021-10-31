@@ -36,7 +36,6 @@ const fetchShops = async (sortBy = 'rating') => {
   return allShopsData;
 };
 
-// https://api.yelp.com/v3/businesses/v21jReWx5dd5KuQ0QS6Dog/reviews
 const fetchReview = async (shopId) => {
   const config = {
     method: 'get',
@@ -50,13 +49,6 @@ const fetchReview = async (shopId) => {
   const { data } = await axios(config);
 
   return data;
-
-  // const allShopsData = data.businesses.map((element) => {
-  //   const { id, name, image_url: img, url, rating, review_count } = element;
-  //   return ({ id, name, img, url, rating, review_count });
-  // });
-
-  // return allShopsData;
 };
 
 export {
