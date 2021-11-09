@@ -8,8 +8,12 @@ const Modal = ({ shop, onRequestClose }) => {
   const [review, setReview] = useState({});
 
   useEffect(async () => {
-    const result = await fetchReview(shop.id);
-    setReview(result.reviews[1]);
+    try {
+      const result = await fetchReview(shop.id);
+      setReview(result.reviews[1]);
+    } catch (error) {
+      setReview({});
+    }
 
     function onKeyDown(event) {
       if (event.keyCode === 27) {
@@ -39,7 +43,14 @@ const Modal = ({ shop, onRequestClose }) => {
         </h3>
         <div className="placeholder medium">
           {!Object.keys(review).length
-            ? <p> Wait, ice cream is loading . . .&nbsp;&#127848;&emsp;&#127848;&emsp;&#127848; </p>
+            ? (
+              <>
+                <p>
+                  Wait, ice cream is loading . . .&nbsp;&#127848;&emsp;&#127848;&emsp;&#127848;
+                </p>
+                <div id="loading" />
+              </>
+            )
             : (
               <>
                 <i>

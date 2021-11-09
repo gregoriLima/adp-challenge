@@ -25,18 +25,22 @@ const fetchShops = async (sortBy = 'rating') => {
     },
   };
 
-  const { data } = await axios(config);
+  try {
+    const { data } = await axios(config);
 
-  const allShopsData = data.businesses.map((element) => {
-    const { id, name, image_url: img, url, rating, review_count, location } = element;
-    return ({ id, name, img, url, rating, review_count, location });
-  });
+    const allShopsData = data.businesses.map((element) => {
+      const { id, name, image_url: img, url, rating, review_count, location } = element;
+      return ({ id, name, img, url, rating, review_count, location });
+    });
 
-  if (sortBy === 'rating') {
-    return allShopsData.sort((a, b) => b.rating - a.rating);
+    if (sortBy === 'rating') {
+      return allShopsData.sort((a, b) => b.rating - a.rating);
+    }
+
+    return allShopsData;
+  } catch (error) {
+    throw new Error('Unable to fetch shops');
   }
-
-  return allShopsData;
 };
 
 const fetchReview = async (shopId) => {
@@ -49,9 +53,13 @@ const fetchReview = async (shopId) => {
     },
   };
 
-  const { data } = await axios(config);
+  try {
+    const { data } = await axios(config);
 
-  return data;
+    return data;
+  } catch (error) {
+    throw new Error('Unable to fetch review');
+  }
 };
 
 export {

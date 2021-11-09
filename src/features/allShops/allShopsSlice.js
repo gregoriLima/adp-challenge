@@ -1,5 +1,5 @@
 import { selectSearchTerm } from '../searchTerm/searchTermSlice';
-import {fetchShops} from '../../services/index';
+import { fetchShops } from '../../services/index';
 
 export const loadDataMiddleware = (storeAPI) => (next) => (action) => {
   if (typeof action === 'function') {
@@ -10,9 +10,13 @@ export const loadDataMiddleware = (storeAPI) => (next) => (action) => {
 };
 
 export const loadData = (sortBy) => async (dispatch, getState) => {
-  const allShopsData = await fetchShops(sortBy);
+  try {
+    const allShopsData = await fetchShops(sortBy);
 
-  dispatch({ type: 'allShops/loadData', payload: allShopsData });
+    dispatch({ type: 'allShops/loadData', payload: allShopsData });
+  } catch (error) {
+    dispatch({ type: 'allShops/loadData', payload: [] });
+  }
 };
 
 const initialState = [];
